@@ -78,8 +78,59 @@ a {
 }
 
 .nav a:hover,
+.nav-drop-button:hover,
 .nav-cta {
   color: var(--green-dark);
+}
+
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-drop-button {
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.nav-drop-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  display: grid;
+  min-width: 150px;
+  padding: 8px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transform: translateY(-6px);
+  visibility: hidden;
+  transition: opacity 0.16s ease, transform 0.16s ease, visibility 0.16s ease;
+}
+
+.nav-drop-menu a {
+  padding: 10px 12px;
+  color: var(--ink);
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.nav-drop-menu a:hover {
+  color: var(--green-dark);
+  background: var(--soft);
+}
+
+.nav-dropdown:hover .nav-drop-menu,
+.nav-dropdown:focus-within .nav-drop-menu {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
 }
 
 .hero {
