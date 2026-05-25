@@ -151,7 +151,7 @@ a {
   width: 100%;
   margin: 0 0 8px;
   color: #000000;
-  font-size: clamp(44px, 5.2vw, 88px);
+  font-size: clamp(34px, 3.7vw, 68px);
   font-weight: 950;
   line-height: 1.08;
   text-align: center;
@@ -996,6 +996,104 @@ h3 {
   font-weight: 800;
 }
 
+.longterm-section {
+  background:
+    linear-gradient(180deg, #ffffff 0%, #f5fbff 100%);
+}
+
+.longterm-section .section-heading {
+  max-width: 1120px;
+}
+
+.longterm-section .section-heading p:last-child {
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.65;
+  word-break: keep-all;
+}
+
+.strategy-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.strategy-grid article {
+  padding: 28px;
+  background: #ffffff;
+  border: 1px solid #dbe6f4;
+  border-radius: 8px;
+  box-shadow: 0 16px 36px rgba(16, 42, 92, 0.08);
+}
+
+.strategy-number {
+  display: inline-flex;
+  margin-bottom: 18px;
+  padding: 6px 11px;
+  color: #ffffff;
+  background: #102a5c;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 950;
+}
+
+.strategy-grid ul {
+  display: grid;
+  gap: 16px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.strategy-grid li {
+  position: relative;
+  padding-left: 24px;
+  color: #4f5a60;
+  word-break: keep-all;
+}
+
+.strategy-grid li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 9px;
+  height: 9px;
+  background: var(--green);
+  border-radius: 50%;
+}
+
+.strategy-grid strong {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--ink);
+  font-size: 17px;
+}
+
+.strategy-punch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  align-items: center;
+  margin-top: 20px;
+  padding: 20px;
+  color: #102a5c;
+  background: #e9fff4;
+  border: 2px solid var(--green);
+  border-radius: 8px;
+}
+
+.strategy-punch strong {
+  font-size: 22px;
+  font-weight: 950;
+}
+
+.strategy-punch span {
+  color: #36516f;
+  font-weight: 800;
+}
+
 .industries {
   background: #fbfefd;
 }
@@ -1221,6 +1319,7 @@ textarea:focus {
 
   .benefit-grid,
   .package-grid,
+  .strategy-grid,
   .industry-grid,
   .ranking-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1283,6 +1382,7 @@ textarea:focus {
   .benefit-grid,
   .comparison-cards,
   .package-grid,
+  .strategy-grid,
   .industry-grid,
   .ranking-grid,
   .process,
@@ -1303,5 +1403,99 @@ textarea:focus {
 
   .package {
     min-height: auto;
+  }
+}
+
+@media (max-width: 720px) {
+  .site-header {
+    padding: 14px 16px;
+  }
+
+  .nav {
+    gap: 14px;
+    font-size: 14px;
+  }
+
+  .hero {
+    display: block;
+    min-height: auto;
+    padding: 34px 18px 42px;
+  }
+
+  .hero-title {
+    margin-bottom: 26px;
+    font-size: 34px;
+    white-space: normal;
+    word-break: keep-all;
+  }
+
+  .hero h1 {
+    max-width: none;
+    font-size: 36px;
+  }
+
+  .hero h1 .keep-phrase,
+  .keep-phrase,
+  .keep-word {
+    white-space: normal;
+  }
+
+  .hero-text {
+    max-width: none;
+    font-size: 18px;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+    max-width: none;
+  }
+
+  .search-demo {
+    width: 100%;
+    margin-top: 28px;
+  }
+
+  .channel-note {
+    width: 100%;
+    margin-top: 18px;
+    padding: 16px;
+  }
+
+  .channel-note p {
+    font-size: 16px;
+  }
+
+  .exposure-note {
+    margin-top: 12px;
+    font-size: 14px;
+    white-space: normal;
+  }
+
+  .one-line-title {
+    white-space: normal;
+  }
+
+  .comparison-table,
+  .ad-cost-table {
+    overflow-x: auto;
+  }
+
+  .comparison-row,
+  .ad-cost-row {
+    min-width: 0;
+  }
+
+  .comparison-punchline strong,
+  .strategy-punch strong {
+    font-size: 18px;
+  }
+
+  .business-info {
+    padding: 18px 16px 34px;
   }
 }
