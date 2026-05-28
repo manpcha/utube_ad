@@ -649,6 +649,15 @@ h3 {
   border-right: 0;
 }
 
+.mobile-table-hint {
+  display: none;
+  margin: 0 0 12px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 14px;
+  font-weight: 700;
+  line-break: keep-all;
+}
+
 .cost-basis {
   margin-top: 16px;
   padding: 20px;
@@ -1503,25 +1512,171 @@ textarea:focus {
   .strategy-grid,
   .industry-grid,
   .ranking-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .process {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .comparison-row,
-  .ad-cost-row,
-  .intent-flow,
-  .cost-detail-grid,
-  .appeal-box ul,
-  .comparison-punchline {
     grid-template-columns: 1fr;
   }
 
-  .comparison-row span,
-  .ad-cost-row span {
-    border-right: 0;
+  .process {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .intent-flow,
+  .cost-detail-grid,
+  .appeal-box ul,
+  .comparison-punchline,
+  .comparison-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .mobile-table-hint {
+    display: block;
+  }
+
+  .ad-cost-table {
+    margin-top: 18px;
+    overflow: visible;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .ad-cost-title {
+    margin-bottom: 14px;
+    padding: 16px;
+    font-size: 20px;
+    border-radius: 12px;
+  }
+
+  .ad-cost-row.head {
+    display: none;
+  }
+
+  .ad-cost-row:not(.head) {
+    display: block;
+    margin-bottom: 12px;
+    padding: 16px;
+    background: #ffffff;
+    border: 1px solid #dbe3e7;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  .ad-cost-row.featured {
+    border: 3px solid #d71920;
+    background: #e9fff4;
+  }
+
+  .ad-cost-row:not(.head) span {
+    display: block;
+    padding: 10px 0;
+    border: 0;
+    border-bottom: 1px solid #edf1f3;
+    text-align: left;
+  }
+
+  .ad-cost-row:not(.head) span:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .ad-cost-row:not(.head) span:first-child {
+    padding-top: 0;
+    padding-bottom: 12px;
+    margin-bottom: 4px;
+    color: #102a5c;
+    border-bottom: 2px solid #102a5c;
+    font-size: 17px;
+    font-weight: 950;
+    line-height: 1.35;
+  }
+
+  .ad-cost-row.featured span:first-child::after {
+    content: "추천";
+    display: inline-block;
+    margin-left: 8px;
+    padding: 3px 8px;
+    color: #ffffff;
+    background: #d71920;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 900;
+    vertical-align: middle;
+  }
+
+  .ad-cost-row:not(.head) span:not(:first-child)::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 4px;
+    color: #6a7278;
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  .ad-cost-row:not(.head) span:not(:first-child) {
+    color: #263238;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.45;
+  }
+
+  .ad-cost-row.featured:not(.head) span:not(:last-child) {
+    border-bottom: 1px solid #d8efe4;
+  }
+
+  .comparison-table {
+    margin-top: 18px;
+    overflow: visible;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .comparison-row.head {
+    display: none;
+  }
+
+  .comparison-row:not(.head) {
+    display: block;
+    margin-bottom: 12px;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 14px;
+  }
+
+  .comparison-row:not(.head) span {
+    display: block;
+    padding: 0;
+    border: 0;
+  }
+
+  .comparison-row:not(.head) span:first-child {
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    color: #ffe066;
+    font-size: 16px;
+    font-weight: 950;
+  }
+
+  .comparison-row:not(.head) span:not(:first-child) {
+    margin-top: 10px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.45;
+  }
+
+  .comparison-row:not(.head) span:not(:first-child)::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 6px;
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 12px;
+    font-weight: 800;
   }
 
   .estimate-copy {
@@ -1595,6 +1750,14 @@ textarea:focus {
 }
 
 @media (max-width: 720px) {
+  .section {
+    padding: 48px 18px;
+  }
+
+  .comparison-section .section-heading p:last-child {
+    font-size: 16px;
+  }
+
   .hero {
     display: block;
     min-height: auto;
@@ -1657,16 +1820,6 @@ textarea:focus {
 
   .one-line-title {
     white-space: normal;
-  }
-
-  .comparison-table,
-  .ad-cost-table {
-    overflow-x: auto;
-  }
-
-  .comparison-row,
-  .ad-cost-row {
-    min-width: 0;
   }
 
   .comparison-punchline strong,
