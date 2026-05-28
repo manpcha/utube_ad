@@ -1,0 +1,18 @@
+---
+description: Commit and push code changes automatically without asking
+alwaysApply: true
+---
+
+# Auto Git Push
+
+When you finish making code changes in this project:
+
+1. Commit the relevant changes with a clear message (do not ask the user first).
+2. Push to the remote repository immediately after a successful commit.
+3. Do not ask whether to push; treat push as part of completing the task.
+
+Do not commit files that likely contain secrets (`.env`, credentials, etc.).
+
+Do not use destructive git commands unless the user explicitly requests them.
+
+If commit or push fails, fix the issue and retry; report the failure only if it cannot be resolved.
