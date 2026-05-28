@@ -339,6 +339,13 @@ h3 {
   font-size: clamp(26px, 3.4vw, 46px);
 }
 
+@media (min-width: 981px) {
+  .pc-one-line {
+    max-width: none;
+    white-space: nowrap;
+  }
+}
+
 .hero-text {
   max-width: 960px;
   margin: 24px 0 0;
@@ -747,6 +754,13 @@ h3 {
   line-break: keep-all;
   word-break: keep-all;
   overflow-wrap: normal;
+}
+
+@media (min-width: 981px) {
+  .comparison-section .section-heading p.pc-one-line {
+    max-width: none;
+    font-size: 17px;
+  }
 }
 
 .comparison-section {
@@ -1317,6 +1331,13 @@ h3 {
   margin: 14px 0 0;
   color: var(--muted);
   font-size: 17px;
+}
+
+@media (min-width: 981px) {
+  .ranking-section .section-heading p.pc-one-line {
+    max-width: none;
+    font-size: 16px;
+  }
 }
 
 .ranking-grid {
