@@ -416,66 +416,74 @@
           </p>
         </div>
         <div class="ranking-grid" aria-label="기존 고객사 검색순위 예시">
-          <article>
-            <span class="rank">2위</span>
-            <strong>노원맛집</strong>
-            <p>노원맛집 오OOOO</p>
-          </article>
-          <article>
-            <span class="rank">3위</span>
-            <strong>인천카페</strong>
-            <p>인천카OO 사O</p>
-          </article>
-          <article>
-            <span class="rank">3위</span>
-            <strong>연신내</strong>
-            <p>연신내 형O곱O</p>
-          </article>
-          <article>
-            <span class="rank">3위</span>
-            <strong>홍대맛집</strong>
-            <p>홍대맛집 구OOO</p>
-          </article>
-          <article>
-            <span class="rank">3위</span>
-            <strong>강남언니</strong>
-            <p>강남언니 여OOO</p>
-          </article>
-          <article>
-            <span class="rank">4위</span>
-            <strong>부천맛집</strong>
-            <p>부천맛집 장OO밥상</p>
-          </article>
-          <article>
-            <span class="rank">4위</span>
-            <strong>간병인보험</strong>
-            <p>간병인보험 보험라이프 OOO</p>
-          </article>
-          <article>
-            <span class="rank">6위</span>
-            <strong>강남 피부과</strong>
-            <p>강남 피부과 예OOO</p>
-          </article>
-          <article>
-            <span class="rank">7위</span>
-            <strong>선릉역</strong>
-            <p>선릉역 매OOOOO</p>
-          </article>
-          <article>
-            <span class="rank">8위</span>
-            <strong>깡통시장</strong>
-            <p>깡통시장 OO갈비 후OOO</p>
-          </article>
-          <article>
-            <span class="rank">8위</span>
-            <strong>도깨비시장</strong>
-            <p>도깨비시장 은OO반OO</p>
-          </article>
-          <article>
-            <span class="rank">9위</span>
-            <strong>물방울 리프팅</strong>
-            <p>물방울 리프팅 홈OO</p>
-          </article>
+          <div class="ranking-group">
+            <article>
+              <span class="rank">2위</span>
+              <strong>노원맛집</strong>
+              <p>노원맛집 오OOOO</p>
+            </article>
+            <article>
+              <span class="rank">3위</span>
+              <strong>인천카페</strong>
+              <p>인천카OO 사O</p>
+            </article>
+            <article>
+              <span class="rank">3위</span>
+              <strong>연신내</strong>
+              <p>연신내 형O곱O</p>
+            </article>
+          </div>
+          <div class="ranking-group">
+            <article>
+              <span class="rank">3위</span>
+              <strong>홍대맛집</strong>
+              <p>홍대맛집 구OOO</p>
+            </article>
+            <article>
+              <span class="rank">3위</span>
+              <strong>강남언니</strong>
+              <p>강남언니 여OOO</p>
+            </article>
+            <article>
+              <span class="rank">4위</span>
+              <strong>부천맛집</strong>
+              <p>부천맛집 장OO밥상</p>
+            </article>
+          </div>
+          <div class="ranking-group">
+            <article>
+              <span class="rank">4위</span>
+              <strong>간병인보험</strong>
+              <p>간병인보험 보험라이프 OOO</p>
+            </article>
+            <article>
+              <span class="rank">6위</span>
+              <strong>강남 피부과</strong>
+              <p>강남 피부과 예OOO</p>
+            </article>
+            <article>
+              <span class="rank">7위</span>
+              <strong>선릉역</strong>
+              <p>선릉역 매OOOOO</p>
+            </article>
+          </div>
+          <div class="ranking-group">
+            <article>
+              <span class="rank">8위</span>
+              <strong>깡통시장</strong>
+              <p>깡통시장 OO갈비 후OOO</p>
+            </article>
+            <article>
+              <span class="rank">8위</span>
+              <strong>도깨비시장</strong>
+              <p>도깨비시장 은OO반OO</p>
+            </article>
+            <article>
+              <span class="rank">9위</span>
+              <strong>물방울 리프팅</strong>
+              <p>물방울 리프팅 홈OO</p>
+            </article>
+          </div>
         </div>
         <div class="ranking-summary">
           <strong>평균 노출 달성률 95%</strong>
@@ -490,37 +498,41 @@
         </div>
         <div class="package-grid">
           <article class="package">
-            <p class="tag">Starter</p>
-            <h3>월 45만원부터</h3>
-            <p class="muted">VAT 별도</p>
-            <ul>
+            <p class="package-label">Starter</p>
+            <h3 class="package-price">월 45만원부터</h3>
+            <p class="package-note">VAT 별도 · 매월 청구</p>
+            <ul class="package-features">
               <li>핵심 타깃 키워드 1개</li>
               <li>기본 키워드 컨설팅</li>
               <li>주 1회 모니터링</li>
               <li>리포트 제공</li>
             </ul>
+            <a class="package-cta" href="#estimate">견적 문의</a>
           </article>
           <article class="package featured">
-            <p class="tag">Standard</p>
-            <h3>상담 후 산정</h3>
-            <p class="muted">추천 패키지</p>
-            <ul>
-              <li>핵심/서브 키워드 3개</li>
+            <p class="package-badge">추천</p>
+            <p class="package-label">Standard</p>
+            <h3 class="package-price">상담 후 산정</h3>
+            <p class="package-note">핵심/서브 키워드 3개 · 매월 청구</p>
+            <ul class="package-features">
               <li>경쟁도 분석과 전략 수립</li>
               <li>일일 모니터링</li>
               <li>월간 통합 리포트</li>
+              <li>가장 많이 선택하는 패키지</li>
             </ul>
+            <a class="package-cta primary" href="#estimate">무료 진단</a>
           </article>
           <article class="package">
-            <p class="tag">Premium</p>
-            <h3>상담 후 산정</h3>
-            <p class="muted">고난도 키워드 운영</p>
-            <ul>
+            <p class="package-label">Premium</p>
+            <h3 class="package-price">상담 후 산정</h3>
+            <p class="package-note">고난도 키워드 · 매월 청구</p>
+            <ul class="package-features">
               <li>핵심 키워드 5개 이상</li>
               <li>신규 서비스 연계 컨설팅</li>
               <li>전담 매니저 우선 지원</li>
               <li>실시간 모니터링 대응</li>
             </ul>
+            <a class="package-cta" href="#estimate">견적 문의</a>
           </article>
         </div>
         <p class="notice">
