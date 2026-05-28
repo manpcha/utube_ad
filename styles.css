@@ -1967,12 +1967,54 @@ textarea:focus {
   background: #f4fbf8;
 }
 
-.business-info dl {
+.business-info-panel {
+  display: grid;
+  grid-template-columns: 2.1fr 5.75fr;
+  gap: 20px;
+  align-items: stretch;
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
+.back-to-top {
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  min-height: 100%;
+  padding: 10px;
+  background: linear-gradient(160deg, #1a4480 0%, #102a5c 100%);
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(16, 42, 92, 0.24);
+  text-decoration: none;
+}
+
+.back-to-top span {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 14px;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+  border-radius: 12px;
+  box-shadow: 0 8px 18px rgba(0, 120, 78, 0.28);
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 950;
+  line-height: 1.2;
+  text-align: center;
+  word-break: keep-all;
+}
+
+.back-to-top:hover span {
+  color: var(--yellow);
+  filter: brightness(1.06);
+}
+
+.business-info-panel dl {
   display: grid;
   grid-template-columns: 0.9fr 1.2fr 0.85fr 0.85fr 0.85fr minmax(360px, 3.4fr);
   gap: 12px 20px;
-  max-width: 1360px;
-  margin: 0 auto;
+  margin: 0;
   padding: 18px 22px;
   color: #566168;
   background: #ffffff;
@@ -2452,6 +2494,16 @@ textarea:focus {
 
   .business-info dl {
     grid-template-columns: 1fr;
+  }
+
+  .business-info-panel {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .back-to-top {
+    min-height: 88px;
+    font-size: 22px;
   }
 
   label,
