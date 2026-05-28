@@ -293,6 +293,15 @@ h1 {
   line-break: keep-all;
 }
 
+.hero-subtitle {
+  max-width: 920px;
+  margin-top: 4px;
+  font-size: clamp(22px, 2.1vw, 34px);
+  font-weight: 900;
+  line-height: 1.45;
+  color: #243038;
+}
+
 h2 {
   font-size: clamp(28px, 4vw, 48px);
 }
@@ -2280,6 +2289,10 @@ textarea:focus {
     font-size: 46px;
   }
 
+  .hero-subtitle {
+    font-size: 28px;
+  }
+
   .hero-stats {
     grid-template-columns: 1fr;
   }
@@ -2332,9 +2345,10 @@ textarea:focus {
     word-break: keep-all;
   }
 
-  .hero h1 {
+  .hero h1,
+  .hero-subtitle {
     max-width: none;
-    font-size: 36px;
+    font-size: 26px;
   }
 
   .hero h1 .keep-phrase,
