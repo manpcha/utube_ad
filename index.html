@@ -12,27 +12,41 @@
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="#top" aria-label="유튜브검색 광고 홈">
-        <span class="brand-mark">YS</span>
-        <span>유튜브검색 광고대행</span>
-      </a>
-      <nav class="nav" aria-label="주요 메뉴">
-        <a href="#concept">개념</a>
-        <a href="#comparison">광고 비교</a>
-        <a href="#benefits">장점</a>
-        <a href="#rankings">고객사 순위</a>
-        <a href="#packages">패키지</a>
-        <a href="#longterm">장기/다중 키워드</a>
-        <a class="nav-cta" href="#estimate">견적 요청</a>
-        <div class="nav-dropdown">
-          <button type="button" class="nav-drop-button" aria-haspopup="true" aria-expanded="false">문의</button>
-          <div class="nav-drop-menu" aria-label="문의 메뉴">
-            <a id="navEmailLink" href="mailto:manpcha@gmail.com">이메일</a>
-            <a href="https://open.kakao.com/o/siPn46vi" target="_blank" rel="noopener">카카오채팅</a>
+      <div class="header-inner">
+        <a class="brand" href="#top" aria-label="유튜브검색 광고 홈">
+          <span class="brand-mark">YS</span>
+          <span class="brand-text">유튜브검색 광고대행</span>
+        </a>
+        <button
+          type="button"
+          class="nav-toggle"
+          aria-label="메뉴 열기"
+          aria-expanded="false"
+          aria-controls="main-nav"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="nav" id="main-nav" aria-label="주요 메뉴">
+          <a href="#concept">검색 선점 원리</a>
+          <a href="#comparison">타 광고와 비교</a>
+          <a href="#benefits">도입 효과</a>
+          <a href="#rankings">노출 실적</a>
+          <a href="#packages">요금·패키지</a>
+          <a href="#longterm">장기·다중 키워드</a>
+          <a class="nav-cta" href="#estimate">무료 진단·견적</a>
+          <div class="nav-dropdown">
+            <button type="button" class="nav-drop-button" aria-haspopup="true" aria-expanded="false">바로 상담</button>
+            <div class="nav-drop-menu" aria-label="상담 메뉴">
+              <a id="navEmailLink" href="mailto:manpcha@gmail.com">이메일 상담</a>
+              <a href="https://open.kakao.com/o/siPn46vi" target="_blank" rel="noopener">카카오톡 상담</a>
+            </div>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </div>
     </header>
+    <div class="nav-overlay" hidden></div>
 
     <main id="top">
       <section class="hero">

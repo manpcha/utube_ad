@@ -8,16 +8,30 @@
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="index.html" aria-label="유튜브검색 광고 홈">
-        <span class="brand-mark">YS</span>
-        <span>유튜브검색 광고대행</span>
-      </a>
-      <nav class="nav" aria-label="주요 메뉴">
-        <a href="index.html#concept">개념</a>
-        <a href="index.html#rankings">고객사 순위</a>
-        <a class="nav-cta" href="index.html#estimate">견적 요청</a>
-      </nav>
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="유튜브검색 광고 홈">
+          <span class="brand-mark">YS</span>
+          <span class="brand-text">유튜브검색 광고대행</span>
+        </a>
+        <button
+          type="button"
+          class="nav-toggle"
+          aria-label="메뉴 열기"
+          aria-expanded="false"
+          aria-controls="main-nav"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="nav" id="main-nav" aria-label="주요 메뉴">
+          <a href="index.html#concept">검색 선점 원리</a>
+          <a href="index.html#rankings">노출 실적</a>
+          <a class="nav-cta" href="index.html#estimate">무료 진단·견적</a>
+        </nav>
+      </div>
     </header>
+    <div class="nav-overlay" hidden></div>
 
     <main class="privacy-page">
       <section class="section">
@@ -63,5 +77,6 @@
         </div>
       </section>
     </main>
+    <script src="script.js"></script>
   </body>
 </html>
