@@ -201,6 +201,10 @@ simCancel?.addEventListener("click", closeSimulation);
 simDone?.addEventListener("click", closeSimulation);
 simRun?.addEventListener("click", runSimulation);
 
+if (new URLSearchParams(window.location.search).get("simulation") === "1") {
+  openSimulation();
+}
+
 const navEmailSubject = "[유튜브검색 광고 견적요청] 귀사의 회사 상호/업종";
 const navEmailBody = [
   "유튜브검색 광고 견적 요청드립니다.",
