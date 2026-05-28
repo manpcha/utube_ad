@@ -1802,11 +1802,18 @@ textarea:focus {
   font-size: 14px;
 }
 
-.form-note a {
+.form-note.is-success {
   color: var(--green-dark);
-  font-weight: 900;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  font-weight: 800;
+}
+
+.form-note.is-error {
+  color: #b42318;
+  font-weight: 800;
+}
+
+.botcheck {
+  display: none;
 }
 
 .privacy-note {

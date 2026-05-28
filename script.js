@@ -1,4 +1,6 @@
 const CONTACT_EMAIL = "manpcha@gmail.com";
+const WEB3FORMS_ACCESS_KEY = "e02262c0-b695-40c0-849e-4a989eb19e45";
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 
 const form = document.querySelector("#estimateForm");
 const note = document.querySelector("#formNote");
@@ -21,7 +23,7 @@ const simDone = document.querySelector("#simDone");
 const simSearchBox = document.querySelector("#simSearchBox");
 const simSuggestions = document.querySelector("#simSuggestions");
 
-let latestMailto = "";
+let isEstimateSubmitting = false;
 
 const RELATED_SUFFIXES = [
   "추천",
@@ -226,14 +228,21 @@ if (navEmailLink) {
 }
 
 if (form && note) {
+  const submitButton = form.querySelector('button[type="submit"]');
+
   form.addEventListener("invalid", (event) => {
     event.preventDefault();
     note.textContent = "필수 입력 항목과 개인정보 수집 및 이용 동의 체크 여부를 확인해주세요.";
+    note.classList.remove("is-success", "is-error");
     event.target.focus();
   }, true);
 
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
+
+    if (isEstimateSubmitting) {
+      return;
+    }
 
     const data = new FormData(form);
     const name = data.get("name").trim();
@@ -245,29 +254,61 @@ if (form && note) {
     const location = data.get("location").trim() || "미입력";
     const message = data.get("message").trim() || "별도 요청 내용 없음";
     const consent = data.get("privacyConsent") ? "동의함" : "미동의";
-
     const subjectName = company === "미입력" ? name : company;
     const subject = `[유튜브검색 광고 견적 요청] ${subjectName} / ${industry}`;
-    const body = [
-      "유튜브검색 광고 견적 요청드립니다.",
-      "",
-      `이름: ${name}`,
-      `이메일: ${email}`,
-      `연락처: ${phone}`,
-      `상호: ${company}`,
-      `업종: ${industry}`,
-      `희망 키워드: ${keywords}`,
-      `소재지: ${location}`,
-      `개인정보 수집 및 이용 동의: ${consent}`,
-      "",
-      "기타 요청 사항:",
-      message,
-    ].join("\n");
 
-    const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    latestMailto = mailto;
-    window.location.href = mailto;
+    isEstimateSubmitting = true;
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "전송 중...";
+    }
+    note.textContent = "견적 요청을 전송하고 있습니다. 잠시만 기다려 주세요.";
+    note.classList.remove("is-success", "is-error");
 
-    note.innerHTML = `메일 작성창이 열리지 않으면 <a href="${latestMailto}">여기를 눌러 다시 열어주세요.</a>`;
+    try {
+      const response = await fetch(WEB3FORMS_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject,
+          from_name: name,
+          name,
+          email,
+          phone,
+          company,
+          industry,
+          keywords,
+          location,
+          message,
+          privacy_consent: consent,
+          botcheck: "",
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "전송에 실패했습니다.");
+      }
+
+      form.reset();
+      note.textContent = "견적 요청이 접수되었습니다. 확인 후 빠르게 회신드리겠습니다.";
+      note.classList.add("is-success");
+      note.classList.remove("is-error");
+    } catch (error) {
+      note.textContent = "전송에 실패했습니다. 잠시 후 다시 시도하시거나 이메일(manpcha@gmail.com) 또는 카카오톡 상담을 이용해 주세요.";
+      note.classList.add("is-error");
+      note.classList.remove("is-success");
+    } finally {
+      isEstimateSubmitting = false;
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = "견적 요청 보내기";
+      }
+    }
   });
 }

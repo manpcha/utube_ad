@@ -8,7 +8,7 @@
       name="description"
       content="유튜브 검색어 자동완성 광고의 개념을 쉽게 설명하고, 무료 키워드 진단과 견적 요청 메일을 받을 수 있는 상담 페이지입니다."
     />
-    <link rel="stylesheet" href="styles.css?v=2026052810" />
+    <link rel="stylesheet" href="styles.css?v=2026052811" />
   </head>
   <body>
     <header class="site-header">
@@ -698,8 +698,8 @@
           <p class="eyebrow">견적 요청</p>
           <h2>무료 키워드 진단을 요청하세요.</h2>
           <p>
-            아래 내용을 작성하면 메일 작성창이 열립니다. 담당자 이메일만 설정하면 실제 상담
-            접수용 페이지로 바로 사용할 수 있습니다.
+            아래 내용을 작성해 보내주시면 담당자 이메일(<strong>manpcha@gmail.com</strong>)로
+            견적 요청이 바로 접수됩니다. PC·스마트폰 모두 메일 프로그램 없이 전송됩니다.
           </p>
           <ul class="check-list">
             <li>희망 키워드와 지역을 기준으로 가능성을 확인합니다.</li>
@@ -707,7 +707,14 @@
             <li>작업 기간, 노출 기간, 모니터링 방식까지 함께 안내합니다.</li>
           </ul>
         </div>
-        <form class="estimate-form" id="estimateForm">
+        <form
+          class="estimate-form"
+          id="estimateForm"
+          action="https://api.web3forms.com/submit"
+          method="POST"
+        >
+          <input type="hidden" name="access_key" value="e02262c0-b695-40c0-849e-4a989eb19e45" />
+          <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off" hidden />
           <label>
             이름
             <input name="name" autocomplete="name" required placeholder="홍길동" />
@@ -782,7 +789,7 @@
             </label>
             <a class="privacy-link" href="privacy.html">개인정보처리방침 보기</a>
           </div>
-          <button class="button primary full" type="submit">견적 요청 메일 보내기</button>
+          <button class="button primary full" type="submit">견적 요청 보내기</button>
           <p class="privacy-note">
             ※ 본 사이트는 광고·마케팅 상담을 위한 문의 접수 페이지이며,
             제공된 개인정보는 상담 목적 외 사용되지 않습니다.
@@ -876,6 +883,6 @@
       <a href="#estimate">견적 요청하기</a>
     </footer>
 
-    <script src="script.js?v=2026052809"></script>
+    <script src="script.js?v=2026052811"></script>
   </body>
 </html>
