@@ -77,7 +77,14 @@ a {
 .brand-text {
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: normal;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.brand-alert {
+  color: #d71920;
+  font-weight: 950;
 }
 
 .brand-mark {
@@ -595,6 +602,11 @@ h3 {
   background: #ffe066;
   font-size: 24px;
   font-weight: 950;
+}
+
+.ad-cost-body,
+.ad-cost-pair {
+  display: contents;
 }
 
 .ad-cost-row {
@@ -1638,6 +1650,10 @@ textarea:focus {
     padding: 10px 14px;
   }
 
+  .brand-text {
+    font-size: 11px;
+  }
+
   .nav-toggle {
     display: flex;
   }
@@ -1768,6 +1784,26 @@ textarea:focus {
     display: none;
   }
 
+  .ad-cost-body {
+    display: block;
+  }
+
+  .ad-cost-pair {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    margin-bottom: 12px;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid #dbe3e7;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  .ad-cost-pair:has(.featured) {
+    border: 3px solid #d71920;
+  }
+
   .ad-cost-row:not(.head) {
     display: block;
     margin-bottom: 12px;
@@ -1778,9 +1814,30 @@ textarea:focus {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   }
 
-  .ad-cost-row.featured {
-    border: 3px solid #d71920;
+  .ad-cost-pair .ad-cost-row:not(.head) {
+    margin-bottom: 0;
+    padding: 12px 10px;
+    background: #ffffff;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .ad-cost-pair .ad-cost-row:first-child {
+    border-right: 1px solid #edf1f3;
+  }
+
+  .ad-cost-pair .ad-cost-row.featured {
+    border: 0;
     background: #e9fff4;
+  }
+
+  .ad-cost-pair .ad-cost-row:not(.head) span:first-child {
+    font-size: 14px;
+  }
+
+  .ad-cost-pair .ad-cost-row:not(.head) span:not(:first-child) {
+    font-size: 12px;
   }
 
   .ad-cost-row:not(.head) span {
