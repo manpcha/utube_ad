@@ -4,7 +4,6 @@ const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 
 const form = document.querySelector("#estimateForm");
 const note = document.querySelector("#formNote");
-const navEmailLink = document.querySelector("#navEmailLink");
 const navToggle = document.querySelector(".nav-toggle");
 const mainNav = document.querySelector("#main-nav");
 const navOverlay = document.querySelector(".nav-overlay");
@@ -207,24 +206,6 @@ simRun?.addEventListener("click", runSimulation);
 
 if (new URLSearchParams(window.location.search).get("simulation") === "1") {
   openSimulation();
-}
-
-const navEmailSubject = "[유튜브검색 광고 견적요청] 귀사의 회사 상호/업종";
-const navEmailBody = [
-  "유튜브검색 광고 견적 요청드립니다.",
-  "이름: ",
-  "이메일: ",
-  "연락처: ",
-  "상호: ",
-  "업종: ",
-  "희망 키워드: 세 개 정도 콤마로 구분",
-  "소재지: ",
-  "개인정보 수집 및 이용 동의: 동의함",
-  "기타 요청 사항: ",
-].join("\n");
-
-if (navEmailLink) {
-  navEmailLink.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(navEmailSubject)}&body=${encodeURIComponent(navEmailBody)}`;
 }
 
 if (form && note) {
