@@ -1969,11 +1969,11 @@ textarea:focus {
 
 .business-info dl {
   display: grid;
-  grid-template-columns: 1fr 1.35fr 1fr 1fr 1fr 2fr;
-  gap: 12px 22px;
-  max-width: 1180px;
+  grid-template-columns: 0.9fr 1.2fr 0.85fr 0.85fr 0.85fr minmax(360px, 3.4fr);
+  gap: 12px 20px;
+  max-width: 1360px;
   margin: 0 auto;
-  padding: 18px;
+  padding: 18px 22px;
   color: #566168;
   background: #ffffff;
   border: 1px solid var(--line);
@@ -1991,8 +1991,14 @@ textarea:focus {
   font-size: 14px;
 }
 
-.business-address {
-  grid-column: auto;
+.business-address dd {
+  line-height: 1.4;
+}
+
+@media (min-width: 981px) {
+  .business-address dd {
+    white-space: nowrap;
+  }
 }
 
 .site-footer {
