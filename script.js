@@ -6,8 +6,35 @@ const navEmailLink = document.querySelector("#navEmailLink");
 const navToggle = document.querySelector(".nav-toggle");
 const mainNav = document.querySelector("#main-nav");
 const navOverlay = document.querySelector(".nav-overlay");
+const simulationOpen = document.querySelector("#simulationOpen");
+const navSimulation = document.querySelector("#navSimulation");
+const simulationModal = document.querySelector("#simulationModal");
+const simulationBackdrop = document.querySelector("#simulationBackdrop");
+const simulationFormStep = document.querySelector("#simulationFormStep");
+const simulationResultStep = document.querySelector("#simulationResultStep");
+const simCompany = document.querySelector("#simCompany");
+const simKeyword = document.querySelector("#simKeyword");
+const simulationHint = document.querySelector("#simulationHint");
+const simRun = document.querySelector("#simRun");
+const simCancel = document.querySelector("#simCancel");
+const simDone = document.querySelector("#simDone");
+const simSearchBox = document.querySelector("#simSearchBox");
+const simSuggestions = document.querySelector("#simSuggestions");
 
 let latestMailto = "";
+
+const RELATED_SUFFIXES = [
+  "추천",
+  "가격",
+  "후기",
+  "잘하는 곳",
+  "비용",
+  "TOP10",
+  "비교",
+  "예약",
+  "상담",
+  "이벤트",
+];
 
 function setNavOpen(isOpen) {
   if (!navToggle || !mainNav || !navOverlay) {
@@ -20,6 +47,118 @@ function setNavOpen(isOpen) {
   navOverlay.classList.toggle("is-visible", isOpen);
   navOverlay.hidden = !isOpen;
   document.body.classList.toggle("nav-open", isOpen);
+}
+
+function resetSimulationForm() {
+  if (simCompany) {
+    simCompany.value = "";
+  }
+  if (simKeyword) {
+    simKeyword.value = "";
+  }
+  if (simulationHint) {
+    simulationHint.hidden = true;
+  }
+  if (simulationFormStep) {
+    simulationFormStep.hidden = false;
+  }
+  if (simulationResultStep) {
+    simulationResultStep.hidden = true;
+  }
+  if (simSuggestions) {
+    simSuggestions.innerHTML = "";
+  }
+}
+
+function openSimulation() {
+  if (!simulationModal) {
+    return;
+  }
+
+  setNavOpen(false);
+  resetSimulationForm();
+  simulationModal.hidden = false;
+  simulationModal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("simulation-open");
+  simCompany?.focus();
+}
+
+function closeSimulation() {
+  if (!simulationModal) {
+    return;
+  }
+
+  simulationModal.hidden = true;
+  simulationModal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("simulation-open");
+  resetSimulationForm();
+}
+
+function buildSuggestionList(keyword, company) {
+  const brandLine = `${keyword} ${company}`;
+  const pool = RELATED_SUFFIXES.map((suffix) => `${keyword} ${suffix}`);
+  const totalCount = 8;
+  const brandPosition = Math.floor(Math.random() * 6) + 3;
+  const suggestions = [];
+
+  let poolIndex = 0;
+  for (let index = 1; index <= totalCount; index += 1) {
+    if (index === brandPosition) {
+      suggestions.push({ text: brandLine, highlight: true });
+      continue;
+    }
+
+    suggestions.push({
+      text: pool[poolIndex % pool.length],
+      highlight: false,
+    });
+    poolIndex += 1;
+  }
+
+  return suggestions;
+}
+
+function runSimulation() {
+  const company = simCompany?.value.trim() || "";
+  const keyword = simKeyword?.value.trim() || "";
+
+  if (!company || !keyword) {
+    if (simulationHint) {
+      simulationHint.hidden = false;
+    }
+    if (!company) {
+      simCompany?.focus();
+    } else {
+      simKeyword?.focus();
+    }
+    return;
+  }
+
+  if (simulationHint) {
+    simulationHint.hidden = true;
+  }
+
+  const suggestions = buildSuggestionList(keyword, company);
+
+  if (simSearchBox) {
+    simSearchBox.textContent = keyword;
+  }
+
+  if (simSuggestions) {
+    simSuggestions.innerHTML = suggestions
+      .map(({ text, highlight }) => {
+        const className = highlight ? ' class="highlight"' : "";
+        return `<li${className}>${text}</li>`;
+      })
+      .join("");
+  }
+
+  if (simulationFormStep) {
+    simulationFormStep.hidden = true;
+  }
+  if (simulationResultStep) {
+    simulationResultStep.hidden = false;
+  }
 }
 
 if (navToggle && mainNav && navOverlay) {
@@ -40,6 +179,10 @@ if (navToggle && mainNav && navOverlay) {
 
   window.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
+      if (simulationModal && !simulationModal.hidden) {
+        closeSimulation();
+        return;
+      }
       setNavOpen(false);
     }
   });
@@ -50,6 +193,13 @@ if (navToggle && mainNav && navOverlay) {
     }
   });
 }
+
+simulationOpen?.addEventListener("click", openSimulation);
+navSimulation?.addEventListener("click", openSimulation);
+simulationBackdrop?.addEventListener("click", closeSimulation);
+simCancel?.addEventListener("click", closeSimulation);
+simDone?.addEventListener("click", closeSimulation);
+simRun?.addEventListener("click", runSimulation);
 
 const navEmailSubject = "[유튜브검색 광고 견적요청] 귀사의 회사 상호/업종";
 const navEmailBody = [

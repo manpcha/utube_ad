@@ -8,7 +8,7 @@
       name="description"
       content="유튜브 검색어 자동완성 광고의 개념을 쉽게 설명하고, 무료 키워드 진단과 견적 요청 메일을 받을 수 있는 상담 페이지입니다."
     />
-    <link rel="stylesheet" href="styles.css?v=2026052806" />
+    <link rel="stylesheet" href="styles.css?v=2026052807" />
   </head>
   <body>
     <header class="site-header">
@@ -35,6 +35,7 @@
           <a href="#rankings">노출 실적</a>
           <a href="#packages">요금·패키지</a>
           <a href="#longterm">장기·다중 키워드</a>
+          <button type="button" class="nav-simulation" id="navSimulation">시뮬레이션</button>
           <a class="nav-cta" href="#estimate">무료 진단·견적</a>
           <div class="nav-dropdown">
             <button type="button" class="nav-drop-button" aria-haspopup="true" aria-expanded="false">바로 상담</button>
@@ -125,7 +126,7 @@
             <strong>광고주가 원하는 브랜드명, 서비스명, 지역 키워드 조합이 노출되도록
             기획하고 운영</strong>하는 대행 서비스입니다.
           </p>
-          <p class="concept-reference">(맨 위의 그림 참조)</p>
+          <button type="button" class="simulation-trigger" id="simulationOpen">광고 시뮬레이션</button>
           <p>
             일반 광고가 클릭을 유도한다면, 유튜브검색 광고는 검색 자체의 방향을 브랜드 쪽으로
             이끄는 방식입니다. <strong class="red-emphasis">고객이 정보를 찾아보기 전 단계에서
@@ -802,11 +803,65 @@
       </section>
     </main>
 
+    <div class="simulation-modal" id="simulationModal" hidden aria-hidden="true">
+      <div class="simulation-backdrop" id="simulationBackdrop"></div>
+      <div
+        class="simulation-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="simulationTitle"
+      >
+        <h2 id="simulationTitle">광고 시뮬레이션</h2>
+
+        <div class="simulation-step" id="simulationFormStep">
+          <label class="simulation-field">
+            <span>업체명</span>
+            <input
+              type="text"
+              id="simCompany"
+              placeholder="클레오 파트라 피부과"
+              autocomplete="organization"
+            />
+          </label>
+          <label class="simulation-field">
+            <span>타겟 키워드</span>
+            <input
+              type="text"
+              id="simKeyword"
+              placeholder="강남 피부과"
+              autocomplete="off"
+            />
+          </label>
+          <p class="simulation-hint" id="simulationHint" hidden>업체명과 타겟 키워드를 입력해 주세요.</p>
+          <div class="simulation-actions">
+            <button type="button" class="button primary" id="simRun">자동완성 시뮬레이션</button>
+            <button type="button" class="button secondary" id="simCancel">취소</button>
+          </div>
+        </div>
+
+        <div class="simulation-step" id="simulationResultStep" hidden>
+          <div class="simulation-preview search-demo" aria-label="자동완성 시뮬레이션 결과">
+            <div class="browser-bar">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="youtube-search">
+              <div class="search-label">YouTube 검색</div>
+              <div class="search-box" id="simSearchBox"></div>
+              <ul class="suggestions" id="simSuggestions"></ul>
+            </div>
+          </div>
+          <button type="button" class="button primary full" id="simDone">완료</button>
+        </div>
+      </div>
+    </div>
+
     <footer class="site-footer">
       <p>유튜브검색 광고대행 | 검색 이전 단계에서 브랜드를 먼저 인지시키는 마케팅</p>
       <a href="#estimate">견적 요청하기</a>
     </footer>
 
-    <script src="script.js?v=2026052806"></script>
+    <script src="script.js?v=2026052807"></script>
   </body>
 </html>
