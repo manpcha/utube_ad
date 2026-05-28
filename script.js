@@ -6,7 +6,7 @@ const navEmailLink = document.querySelector("#navEmailLink");
 const navToggle = document.querySelector(".nav-toggle");
 const mainNav = document.querySelector("#main-nav");
 const navOverlay = document.querySelector(".nav-overlay");
-const simulationOpen = document.querySelector("#simulationOpen");
+const simulationTriggers = document.querySelectorAll(".simulation-trigger");
 const navSimulation = document.querySelector("#navSimulation");
 const simulationModal = document.querySelector("#simulationModal");
 const simulationBackdrop = document.querySelector("#simulationBackdrop");
@@ -194,7 +194,9 @@ if (navToggle && mainNav && navOverlay) {
   });
 }
 
-simulationOpen?.addEventListener("click", openSimulation);
+simulationTriggers.forEach((trigger) => {
+  trigger.addEventListener("click", openSimulation);
+});
 navSimulation?.addEventListener("click", openSimulation);
 simulationBackdrop?.addEventListener("click", closeSimulation);
 simCancel?.addEventListener("click", closeSimulation);
