@@ -908,6 +908,77 @@ h3 {
   align-items: stretch;
 }
 
+.package-scroll {
+  width: 100%;
+}
+
+@media (max-width: 720px) {
+  .package-scroll {
+    margin-right: -18px;
+    margin-left: -18px;
+    padding-right: 18px;
+    padding-left: 18px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .package-grid {
+    grid-template-columns: repeat(3, minmax(148px, 1fr));
+    width: max(100%, 460px);
+    gap: 10px;
+  }
+
+  .package-features {
+    display: none;
+  }
+
+  .package {
+    min-height: 260px;
+    padding: 16px 10px 14px;
+  }
+
+  .package-price {
+    font-size: 17px;
+  }
+
+  .package-label {
+    font-size: 12px;
+  }
+
+  .package-note {
+    min-height: 32px;
+    font-size: 11px;
+    line-height: 1.35;
+  }
+
+  .package-cta {
+    padding: 10px 8px;
+    font-size: 12px;
+  }
+
+  .ranking-group {
+    gap: 8px;
+  }
+
+  .ranking-group article {
+    min-height: 118px;
+    padding: 12px 6px;
+  }
+
+  .ranking-group strong {
+    font-size: 13px;
+  }
+
+  .ranking-group p {
+    font-size: 11px;
+  }
+
+  .ranking-group .rank {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+}
+
 .benefit-grid article,
 .package,
 .industry-grid article {
@@ -990,24 +1061,71 @@ h3 {
 }
 
 .ranking-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 14px;
 }
 
 .ranking-group {
-  display: contents;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
 }
 
-.ranking-grid article {
-  display: grid;
+.ranking-group article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 8px;
-  min-height: 142px;
-  padding: 20px;
+  min-height: 132px;
+  padding: 14px 8px;
+  text-align: center;
   background: #ffffff;
   border: 1px solid #dbe6f4;
-  border-radius: 8px;
-  box-shadow: 0 10px 28px rgba(16, 42, 92, 0.07);
+  border-radius: 12px;
+  box-shadow: 0 8px 22px rgba(16, 42, 92, 0.07);
+}
+
+.ranking-group strong {
+  font-size: 15px;
+  line-height: 1.25;
+  word-break: keep-all;
+}
+
+.ranking-group p {
+  font-size: 12px;
+  line-height: 1.35;
+  word-break: keep-all;
+}
+
+@media (min-width: 981px) {
+  .ranking-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .ranking-group {
+    display: contents;
+  }
+
+  .ranking-group article {
+    display: grid;
+    gap: 8px;
+    align-items: start;
+    min-height: 142px;
+    padding: 20px;
+    text-align: left;
+    border-radius: 8px;
+  }
+
+  .ranking-group strong {
+    font-size: 19px;
+  }
+
+  .ranking-group p {
+    font-size: inherit;
+  }
 }
 
 .ranking-grid strong {
@@ -1614,68 +1732,6 @@ textarea:focus {
     grid-template-columns: 1fr;
   }
 
-  .ranking-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .ranking-group {
-    display: grid;
-    gap: 0;
-    overflow: hidden;
-    background: #ffffff;
-    border: 1px solid #dbe6f4;
-    border-radius: 14px;
-    box-shadow: 0 10px 28px rgba(16, 42, 92, 0.07);
-  }
-
-  .ranking-group article {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-areas:
-      "rank title"
-      ". detail";
-    gap: 4px 10px;
-    align-items: center;
-    min-height: 0;
-    padding: 14px 16px;
-    border: 0;
-    border-radius: 0;
-    box-shadow: none;
-  }
-
-  .ranking-group article:not(:last-child) {
-    border-bottom: 1px solid #e8eef5;
-  }
-
-  .ranking-group .rank {
-    grid-area: rank;
-  }
-
-  .ranking-group strong {
-    grid-area: title;
-    font-size: 16px;
-  }
-
-  .ranking-group p {
-    grid-area: detail;
-    font-size: 13px;
-  }
-
-  .package-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
-  }
-
-  .package {
-    min-height: 0;
-    padding: 22px 12px 18px;
-  }
-
-  .package-price {
-    font-size: clamp(16px, 2.4vw, 24px);
-  }
-
   .process {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1887,33 +1943,9 @@ textarea:focus {
   .comparison-cards,
   .strategy-grid,
   .industry-grid,
-  .ranking-grid,
   .process,
   .estimate-form {
     grid-template-columns: 1fr;
-  }
-
-  .package-grid {
-    gap: 8px;
-  }
-
-  .package {
-    padding: 16px 8px 14px;
-  }
-
-  .package-label,
-  .package-note,
-  .package-features li,
-  .package-cta {
-    font-size: 11px;
-  }
-
-  .package-price {
-    font-size: 15px;
-  }
-
-  .package-features li {
-    padding: 6px 0 6px 12px;
   }
 
   .business-info dl {
