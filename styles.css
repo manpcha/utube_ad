@@ -449,8 +449,16 @@ h3 {
   padding: clamp(20px, 2.8vw, 28px);
 }
 
-.search-label {
+.search-demo-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
   margin-bottom: 12px;
+}
+
+.search-label {
+  margin-bottom: 0;
   color: var(--muted);
   font-weight: 800;
 }
@@ -546,17 +554,19 @@ h3 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-top: 4px;
-  padding: 12px 26px;
+  flex-shrink: 0;
+  padding: 8px 14px;
   color: #ffe066;
   background: #102a5c;
   border: 0;
   border-radius: 999px;
   font: inherit;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 950;
+  line-height: 1.2;
+  white-space: nowrap;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(16, 42, 92, 0.18);
+  box-shadow: 0 6px 16px rgba(16, 42, 92, 0.16);
 }
 
 .simulation-trigger:hover {
@@ -2336,6 +2346,11 @@ textarea:focus {
   .search-demo {
     width: 100%;
     margin-top: 28px;
+  }
+
+  .simulation-trigger {
+    padding: 7px 11px;
+    font-size: 11px;
   }
 
   .channel-note {
