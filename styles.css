@@ -579,6 +579,83 @@ h3 {
   overflow-wrap: normal;
 }
 
+.comparison-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-vs-card {
+  display: none;
+}
+
+.mobile-vs-title {
+  margin: 0 0 14px;
+  color: #ffe066;
+  font-size: 18px;
+  font-weight: 950;
+  line-height: 1.35;
+  text-align: center;
+  word-break: keep-all;
+}
+
+.mobile-vs-table {
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 14px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
+}
+
+.mobile-vs-row {
+  display: grid;
+  grid-template-columns: 0.72fr 1fr 1fr;
+}
+
+.mobile-vs-row span {
+  padding: 12px 8px;
+  border-right: 1px solid #e8eef5;
+  border-bottom: 1px solid #e8eef5;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.4;
+  word-break: keep-all;
+}
+
+.mobile-vs-row span:last-child {
+  border-right: 0;
+}
+
+.mobile-vs-row:last-child span {
+  border-bottom: 0;
+}
+
+.mobile-vs-row.head {
+  color: #102a5c;
+  background: #ffe066;
+}
+
+.mobile-vs-row.head span {
+  font-size: 11px;
+  font-weight: 950;
+  text-align: center;
+}
+
+.mobile-vs-row:not(.head) span:first-child {
+  color: #102a5c;
+  background: #f3f7fb;
+  font-weight: 950;
+}
+
+.mobile-vs-row:not(.head) span:not(:first-child) {
+  color: #263238;
+  background: #ffffff;
+}
+
+.mobile-vs-row:not(.head) span:last-child {
+  color: #0a5c44;
+  background: #f4fff9;
+}
+
 .comparison-cards {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1728,6 +1805,59 @@ textarea:focus {
 
   .nav-drop-menu a {
     padding-left: 28px;
+  }
+}
+
+@media (max-width: 980px) {
+  .comparison-legacy {
+    display: none;
+  }
+
+  .mobile-vs-card {
+    display: block;
+    margin-top: 14px;
+  }
+
+  .appeal-box {
+    margin-top: 22px;
+  }
+}
+
+@media (min-width: 981px) {
+  .mobile-vs-card {
+    display: none;
+  }
+
+  .comparison-legacy {
+    display: contents;
+  }
+
+  .intent-flow {
+    order: 1;
+  }
+
+  .appeal-box {
+    order: 2;
+  }
+
+  .comparison-cards {
+    order: 3;
+  }
+
+  .mobile-table-hint {
+    order: 4;
+  }
+
+  .comparison-table {
+    order: 5;
+  }
+
+  .comparison-punchline {
+    order: 6;
+  }
+
+  .comparison-note {
+    order: 7;
   }
 }
 
