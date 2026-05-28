@@ -665,6 +665,18 @@ h3 {
   font-size: 24px;
 }
 
+.consent-dialog-text {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.55;
+  word-break: keep-all;
+}
+
+.consent-dialog .simulation-actions {
+  margin-top: 0;
+}
+
 .simulation-field {
   display: grid;
   gap: 8px;

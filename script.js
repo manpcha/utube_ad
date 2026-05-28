@@ -21,6 +21,9 @@ const simCancel = document.querySelector("#simCancel");
 const simDone = document.querySelector("#simDone");
 const simSearchBox = document.querySelector("#simSearchBox");
 const simSuggestions = document.querySelector("#simSuggestions");
+const consentModal = document.querySelector("#consentModal");
+const consentBackdrop = document.querySelector("#consentBackdrop");
+const consentModalConfirm = document.querySelector("#consentModalConfirm");
 
 let isEstimateSubmitting = false;
 
@@ -93,6 +96,28 @@ function closeSimulation() {
   simulationModal.setAttribute("aria-hidden", "true");
   document.body.classList.remove("simulation-open");
   resetSimulationForm();
+}
+
+function openConsentModal() {
+  if (!consentModal) {
+    return;
+  }
+
+  consentModal.hidden = false;
+  consentModal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("simulation-open");
+  consentModalConfirm?.focus();
+}
+
+function closeConsentModal() {
+  if (!consentModal) {
+    return;
+  }
+
+  consentModal.hidden = true;
+  consentModal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("simulation-open");
+  form?.querySelector('[name="privacyConsent"]')?.focus();
 }
 
 function buildSuggestionList(keyword, company) {
@@ -184,6 +209,10 @@ if (navToggle && mainNav && navOverlay) {
         closeSimulation();
         return;
       }
+      if (consentModal && !consentModal.hidden) {
+        closeConsentModal();
+        return;
+      }
       setNavOpen(false);
     }
   });
@@ -210,10 +239,19 @@ if (new URLSearchParams(window.location.search).get("simulation") === "1") {
 
 if (form && note) {
   const submitButton = form.querySelector('button[type="submit"]');
+  const privacyConsentInput = form.querySelector('[name="privacyConsent"]');
 
   form.addEventListener("invalid", (event) => {
     event.preventDefault();
-    note.textContent = "필수 입력 항목과 개인정보 수집 및 이용 동의 체크 여부를 확인해주세요.";
+
+    if (event.target === privacyConsentInput) {
+      note.textContent = "";
+      note.classList.remove("is-success", "is-error");
+      openConsentModal();
+      return;
+    }
+
+    note.textContent = "필수 입력 항목을 확인해주세요.";
     note.classList.remove("is-success", "is-error");
     event.target.focus();
   }, true);
@@ -222,6 +260,13 @@ if (form && note) {
     event.preventDefault();
 
     if (isEstimateSubmitting) {
+      return;
+    }
+
+    if (!privacyConsentInput?.checked) {
+      note.textContent = "";
+      note.classList.remove("is-success", "is-error");
+      openConsentModal();
       return;
     }
 
@@ -293,3 +338,6 @@ if (form && note) {
     }
   });
 }
+
+consentBackdrop?.addEventListener("click", closeConsentModal);
+consentModalConfirm?.addEventListener("click", closeConsentModal);

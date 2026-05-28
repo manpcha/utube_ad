@@ -8,7 +8,7 @@
       name="description"
       content="유튜브 검색어 자동완성 광고의 개념을 쉽게 설명하고, 무료 키워드 진단과 견적 요청 메일을 받을 수 있는 상담 페이지입니다."
     />
-    <link rel="stylesheet" href="styles.css?v=2026052817" />
+    <link rel="stylesheet" href="styles.css?v=2026052818" />
   </head>
   <body>
     <header class="site-header">
@@ -909,11 +909,27 @@
       </div>
     </div>
 
+    <div class="simulation-modal" id="consentModal" hidden aria-hidden="true">
+      <div class="simulation-backdrop" id="consentBackdrop"></div>
+      <div
+        class="simulation-dialog consent-dialog"
+        role="alertdialog"
+        aria-modal="true"
+        aria-labelledby="consentModalTitle"
+      >
+        <h2 id="consentModalTitle">개인정보 수집 및 이용 동의</h2>
+        <p class="consent-dialog-text">견적 요청을 보내려면 개인정보 수집 및 이용에 동의해 주세요.</p>
+        <div class="simulation-actions">
+          <button type="button" class="button primary full" id="consentModalConfirm">확인</button>
+        </div>
+      </div>
+    </div>
+
     <footer class="site-footer">
       <p>유튜브검색 광고대행 | 검색 이전 단계에서 브랜드를 먼저 인지시키는 마케팅</p>
       <a href="#estimate">견적 요청하기</a>
     </footer>
 
-    <script src="script.js?v=2026052812"></script>
+    <script src="script.js?v=2026052818"></script>
   </body>
 </html>
