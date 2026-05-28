@@ -1969,7 +1969,7 @@ textarea:focus {
 
 .business-info dl {
   display: grid;
-  grid-template-columns: 1fr 1.55fr 1fr 1fr 2.25fr;
+  grid-template-columns: 1fr 1.35fr 1fr 1fr 1fr 2fr;
   gap: 12px 22px;
   max-width: 1180px;
   margin: 0 auto;
